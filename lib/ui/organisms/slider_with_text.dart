@@ -41,7 +41,7 @@ class _SliderWithTextState extends State<SliderWithText> {
                     },
                     itemBuilder: (context, index) {
                       return Transform.translate(
-                        offset: const Offset(0, -140), // Move the image slightly up (negative Y-axis)
+                        offset: Offset(0, -MediaQuery.of(context).size.height * 0.174), // 20% of screen height
                         child: Image.asset(
                           widget.images[index],
                           fit: BoxFit.fitWidth,
@@ -67,7 +67,7 @@ class _SliderWithTextState extends State<SliderWithText> {
                     ),
                   ),
                   Positioned(
-                    bottom: 320,
+                    bottom: MediaQuery.of(context).size.height * 0.39, // 40% dari tinggi layar
                     left: 0,
                     right: 0,
                     child: Row(
@@ -76,12 +76,12 @@ class _SliderWithTextState extends State<SliderWithText> {
                         widget.images.length,
                         (index) => Container(
                           margin: const EdgeInsets.symmetric(horizontal: 2),
-                          width: _currentIndex == index ? 18 : 8,
+                          width: _currentIndex == index ? 20 : 4,
                           height: _currentIndex == index ? 4 : 4,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
                             borderRadius: BorderRadius.circular(2),
-                            color: _currentIndex == index ? Colors.white : Colors.grey,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -101,8 +101,8 @@ class _SliderWithTextState extends State<SliderWithText> {
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(48),
-                topRight: Radius.circular(48),
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
               ),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 36),
