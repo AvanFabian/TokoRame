@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tokorame/ui/pages/produk_screen.dart';
 import '../organisms/slider_with_text.dart';
 
-class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({super.key});
+class Section1 extends StatelessWidget {
+  const Section1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,13 @@ class OnboardingPage extends StatelessWidget {
           'Subdomain unik dan toko online profesional siap pakai',
         ],
         onButtonPressed: () {
-          print('Tombol Selanjutnya ditekan');
+          // navigate to ProdukScreen
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ProdukScreen(),
+            ),
+          );
         },
       ),
     );

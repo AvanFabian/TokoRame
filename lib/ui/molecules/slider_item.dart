@@ -9,7 +9,7 @@ class SliderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       imagePath,
-      fit: BoxFit.cover,
+      fit: BoxFit.fitWidth,
     );
   }
 }

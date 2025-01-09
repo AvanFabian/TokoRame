@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const OnboardingScreen(), // Ganti halaman utama ke OnboardingScreen
+      home: const Section1Screen(), // Ganti halaman utama ke Section1Screen
       debugShowCheckedModeBanner: false,
     );
   }

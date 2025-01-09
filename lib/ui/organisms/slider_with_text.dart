@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../atoms/text_widget.dart';
 import '../atoms/button_widget.dart';
-
+import '../molecules/slider_item.dart';
 class SliderWithText extends StatefulWidget {
   final List<String> images;
   final List<String> titles;
@@ -42,10 +42,7 @@ class _SliderWithTextState extends State<SliderWithText> {
                     itemBuilder: (context, index) {
                       return Transform.translate(
                         offset: Offset(0, -MediaQuery.of(context).size.height * 0.174), // 20% of screen height
-                        child: Image.asset(
-                          widget.images[index],
-                          fit: BoxFit.fitWidth,
-                        ),
+                        child: SliderItem(imagePath: widget.images[index]),
                       );
                     },
                   ),
