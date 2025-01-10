@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tokorame/ui/atoms/button_widget.dart';
-import 'package:tokorame/ui/organisms/product_card.dart';
+import 'package:tokorame/ui/organisms/produk_card.dart';
 import '../molecules/price_info.dart';
 import '../molecules/selection_options.dart';
 import '../molecules/stock_indicator.dart';
 
-class ProductDetails extends StatelessWidget {
+class ProdukDetails extends StatelessWidget {
   final String title;
   final String subtitle;
   final String description;
@@ -17,7 +17,7 @@ class ProductDetails extends StatelessWidget {
   final List<String> sizes;
   final List<Color> colors;
 
-  const ProductDetails({
+  const ProdukDetails({
     required this.title,
     required this.subtitle,
     required this.description,
@@ -197,7 +197,7 @@ class ProductDetails extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: ProductCard(
+                  child: ProdukCard(
                     imagePath: 'assets/images/PexelsPhotobyLukas.png',
                     buttonLabel: 'Komisi',
                     boldTextBefore: '30%',
@@ -209,7 +209,7 @@ class ProductDetails extends StatelessWidget {
                 ),
                 const SizedBox(width: 16), // Spacing between cards
                 Expanded(
-                  child: ProductCard(
+                  child: ProdukCard(
                     imagePath: 'assets/images/PexelsPhotobyLukas.png',
                     buttonLabel: 'Komisi',
                     boldTextBefore: '25%',
@@ -245,7 +245,7 @@ class ProductDetails extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: ProductCard(
+                  child: ProdukCard(
                     imagePath: 'assets/images/PexelsPhotobyLukas.png',
                     buttonLabel: 'Komisi',
                     boldTextBefore: '20%',
@@ -258,7 +258,7 @@ class ProductDetails extends StatelessWidget {
                 ),
                 const SizedBox(width: 16), // Spacing between cards
                 Expanded(
-                  child: ProductCard(
+                  child: ProdukCard(
                     imagePath: 'assets/images/PexelsPhotobyLukas.png',
                     buttonLabel: 'Komisi',
                     boldTextBefore: '15%',

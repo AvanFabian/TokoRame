@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../molecules/slider_item.dart';
 
-class ProductSlider extends StatelessWidget {
+class ProdukSlider extends StatelessWidget {
   final List<String> images;
 
-  const ProductSlider({required this.images, super.key});
+  const ProdukSlider({required this.images, super.key});
 
   @override
   Widget build(BuildContext context) {

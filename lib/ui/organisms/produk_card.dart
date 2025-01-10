@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tokorame/ui/atoms/button_widget.dart';
 
 /// A widget representing a product card, including an image, bookmark, price, stock, and a button.
-class ProductCard extends StatelessWidget {
+class ProdukCard extends StatelessWidget {
   final String imagePath; // Path to the product image.
   final String buttonLabel; // Label for the bottom-left button on the image.
   final String boldTextBefore; // Bold text before the button label.
@@ -12,7 +12,7 @@ class ProductCard extends StatelessWidget {
   final String price; // Price of the product.
   final String stock; // Stock availability of the product.
 
-  const ProductCard({
+  const ProdukCard({
     required this.imagePath,
     required this.buttonLabel,
     required this.boldTextBefore,

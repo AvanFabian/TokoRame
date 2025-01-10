@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tokorame/ui/atoms/button_widget.dart';
-import '../organisms/product_slider.dart';
-import '../organisms/product_details.dart';
+import '../organisms/produk_slider.dart';
+import '../organisms/produk_details.dart';
 
 class ProdukPage extends StatelessWidget {
   const ProdukPage({super.key});
@@ -35,7 +35,7 @@ class ProdukPage extends StatelessWidget {
           Column(
             children: [
               Expanded(
-                child: ProductSlider(images: images),
+                child: ProdukSlider(images: images),
               ),
             ],
           ),
@@ -53,7 +53,7 @@ class ProdukPage extends StatelessWidget {
                   topRight: Radius.circular(24),
                 ),
               ),
-              child: ProductDetails(
+              child: ProdukDetails(
                 title: title,
                 subtitle: subtitle,
                 description: description,
