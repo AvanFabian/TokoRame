@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tokorame/ui/atoms/button_widget.dart';
+import 'package:tokorame/ui/organisms/product_card.dart';
 import '../molecules/price_info.dart';
 import '../molecules/selection_options.dart';
 import '../molecules/stock_indicator.dart';
@@ -173,625 +174,103 @@ class ProductDetails extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 16),
+          // Fourth Container Implementation
+          // Grid of 4 cards (2x2 layout)
+          // Title above the first row
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              "Produk lain dari Irvie group official",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
 
-// Fourth Container Implementation
-          Container(
-            padding: const EdgeInsets.all(16), // Inner padding
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          // First Row of Cards
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Heading Text
-                const Text(
-                  "Produk lain dari Irvie group official",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: ProductCard(
+                    imagePath: 'assets/images/PexelsPhotobyLukas.png',
+                    buttonLabel: 'Komisi',
+                    boldTextBefore: '30%',
+                    onButtonPressed: () {},
+                    productName: 'Beauty Set by Irvie',
+                    price: 'Rp142.400',
+                    stock: '99+ pcs',
                   ),
                 ),
-                const SizedBox(height: 16), // Spacing below heading
-                // Nested Column for Rows
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // First Card
-                        Expanded(
-                          child: Card(
-                            color: Colors.white, // Make the card background transparent
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              children: [
-                                // Stack for the image and button overlay
-                                Stack(
-                                  children: [
-                                    // Image
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(
-                                        top: Radius.circular(9),
-                                      ),
-                                      child: Image.asset(
-                                        'assets/images/PexelsPhotobyLukas.png',
-                                        fit: BoxFit.cover,
-                                        height: 160,
-                                        width: double.infinity,
-                                      ),
-                                    ),
-                                    // ButtonWidget on the bottom-left corner
-                                    Positioned(
-                                      bottom: 8, // Adjust the vertical position
-                                      left: 8, // Adjust the horizontal position
-                                      child: SizedBox(
-                                        width: 100, // Adjust width as needed
-                                        child: ButtonWidget(
-                                          label: "Komisi", // Regular text
-                                          boldTextBefore: "30%", // Bold text before
-                                          onPressed: () {
-                                            print("30% Komisi button clicked");
-                                          },
-                                          backgroundColor: const Color(0xCC0EA5E9), // Background color
-                                          foregroundColor: Colors.white, // Text color
-                                          borderRadius: BorderRadius.circular(6), // Rounded corners
-                                          side: BorderSide.none, // No border
-                                          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2), // Tight padding
-                                          fontSize: 10, // Font size
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      // Product Name
-                                      Text(
-                                        "Beauty Set by Irvie",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 8), // Spacing between product name and price
-                                      // Row containing "Harga Reseller" and price with icon
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          // Column for "Harga Reseller" and "Rp142.400"
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Harga Reseller",
-                                                style: TextStyle(
-                                                  fontSize: 10,
-                                                  color: Color(0xFF697170),
-                                                ),
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                children: [
-                                                  Text(
-                                                    "Rp142.400",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.green,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  SizedBox(width: 16), // Spacing between price and icon
-                                                  Row(
-                                                    children: [
-                                                      // Icon for "99+ pcs"
-                                                      Icon(
-                                                        Icons.shopping_cart,
-                                                        size: 16,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      // Text for "99+ pcs"
-                                                      Text(
-                                                        "99+ pcs",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                // ButtonWidget
-                                ButtonWidget(
-                                  label: "Bagikan Produk",
-                                  backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                                  foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                                  borderRadius: BorderRadius.circular(8),
-                                  side: BorderSide.none,
-                                  onPressed: () {
-                                    print("Bagikan Produk pressed");
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        // second card (Card 1)
-                        const SizedBox(width: 16), // Spacing between cards
-                        Expanded(
-                          child: Card(
-                            color: Colors.white, // Make the card background transparent
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              children: [
-                                // Stack for the image, button overlay, and bookmark banner
-                                Stack(
-                                  children: [
-                                    // Image
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(
-                                        top: Radius.circular(9),
-                                      ),
-                                      child: Image.asset(
-                                        'assets/images/PexelsPhotobyLukas.png',
-                                        fit: BoxFit.cover,
-                                        height: 160,
-                                        width: double.infinity,
-                                      ),
-                                    ),
-                                    // ButtonWidget on the bottom-left corner
-                                    Positioned(
-                                      bottom: 8, // Adjust the vertical position
-                                      left: 8, // Adjust the horizontal position
-                                      child: SizedBox(
-                                        width: 100, // Adjust width as needed
-                                        child: ButtonWidget(
-                                          label: "Komisi", // Regular text
-                                          boldTextBefore: "30%", // Bold text before
-                                          onPressed: () {
-                                            print("30% Komisi button clicked");
-                                          },
-                                          backgroundColor: const Color(0xCC0EA5E9), // Background color
-                                          foregroundColor: Colors.white, // Text color
-                                          borderRadius: BorderRadius.circular(6), // Rounded corners
-                                          side: BorderSide.none, // No border
-                                          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2), // Tight padding
-                                          fontSize: 10, // Font size
-                                        ),
-                                      ),
-                                    ),
-                                    // Bookmark banner with image
-                                    Positioned(
-                                      top: 0, // Adjust vertical position
-                                      right: 6, // Adjust horizontal position
-                                      child: Stack(
-                                        alignment: Alignment.center, // Center the text on the banner
-                                        children: [
-                                          // Bookmark banner image
-                                          Image.asset(
-                                            'assets/images/Bookmark.png', // Replace with your banner image
-                                            height: 40, // Adjust the height as needed
-                                            width: 40, // Adjust the width as needed
-                                            fit: BoxFit.cover,
-                                          ),
-                                          // "New" text overlayed on the banner image
-                                          const Text(
-                                            "New",
-                                            style: TextStyle(
-                                              color: Colors.black, // Text color
-                                              fontSize: 10, // Font size
-                                              fontWeight: FontWeight.bold, // Bold text
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                // Card content below the image
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      // Product Name
-                                      Text(
-                                        "Beauty Set by Irvie",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 8), // Spacing between product name and price
-                                      // Row containing "Harga Reseller" and price with icon
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          // Column for "Harga Reseller" and "Rp142.400"
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Harga Reseller",
-                                                style: TextStyle(
-                                                  fontSize: 10,
-                                                  color: Color(0xFF697170),
-                                                ),
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                children: [
-                                                  Text(
-                                                    "Rp142.400",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.green,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  SizedBox(width: 16), // Spacing between price and icon
-                                                  Row(
-                                                    children: [
-                                                      // Icon for "99+ pcs"
-                                                      Icon(
-                                                        Icons.shopping_cart,
-                                                        size: 16,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      // Text for "99+ pcs"
-                                                      Text(
-                                                        "99+ pcs",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                // ButtonWidget
-                                ButtonWidget(
-                                  label: "Bagikan Produk",
-                                  backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                                  foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                                  borderRadius: BorderRadius.circular(8),
-                                  side: BorderSide.none,
-                                  onPressed: () {
-                                    print("Bagikan Produk pressed");
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16), // Spacing between rows
-
-                    // Second Row of Cards (Duplicate the first row for simplicity)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Card(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              children: [
-                                // Stack for the image, button overlay, and bookmark banner
-                                Stack(
-                                  children: [
-                                    // Image
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(
-                                        top: Radius.circular(9),
-                                      ),
-                                      child: Image.asset(
-                                        'assets/images/PexelsPhotobyLukas.png',
-                                        fit: BoxFit.cover,
-                                        height: 160,
-                                        width: double.infinity,
-                                      ),
-                                    ),
-                                    // ButtonWidget on the bottom-left corner
-                                    Positioned(
-                                      bottom: 8, // Adjust the vertical position
-                                      left: 8, // Adjust the horizontal position
-                                      child: SizedBox(
-                                        width: 100, // Adjust width as needed
-                                        child: ButtonWidget(
-                                          label: "Komisi", // Regular text
-                                          boldTextBefore: "30%", // Bold text before
-                                          onPressed: () {
-                                            print("30% Komisi button clicked");
-                                          },
-                                          backgroundColor: const Color(0xCC0EA5E9), // Background color
-                                          foregroundColor: Colors.white, // Text color
-                                          borderRadius: BorderRadius.circular(6), // Rounded corners
-                                          side: BorderSide.none, // No border
-                                          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2), // Tight padding
-                                          fontSize: 10, // Font size
-                                        ),
-                                      ),
-                                    ),
-                                    // Bookmark banner with image
-                                    Positioned(
-                                      top: 0, // Adjust vertical position
-                                      right: 6, // Adjust horizontal position
-                                      child: Stack(
-                                        alignment: Alignment.center, // Center the text on the banner
-                                        children: [
-                                          // Bookmark banner image
-                                          Image.asset(
-                                            'assets/images/Bookmark.png', // Replace with your banner image
-                                            height: 40, // Adjust the height as needed
-                                            width: 40, // Adjust the width as needed
-                                            fit: BoxFit.cover,
-                                          ),
-                                          // "New" text overlayed on the banner image
-                                          const Text(
-                                            "New",
-                                            style: TextStyle(
-                                              color: Colors.black, // Text color
-                                              fontSize: 10, // Font size
-                                              fontWeight: FontWeight.bold, // Bold text
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                // Card content below the image
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      // Product Name
-                                      Text(
-                                        "Beauty Set by Irvie",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 8), // Spacing between product name and price
-                                      // Row containing "Harga Reseller" and price with icon
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          // Column for "Harga Reseller" and "Rp142.400"
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Harga Reseller",
-                                                style: TextStyle(
-                                                  fontSize: 10,
-                                                  color: Color(0xFF697170),
-                                                ),
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                children: [
-                                                  Text(
-                                                    "Rp142.400",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.green,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  SizedBox(width: 16), // Spacing between price and icon
-                                                  Row(
-                                                    children: [
-                                                      // Icon for "99+ pcs"
-                                                      Icon(
-                                                        Icons.shopping_cart,
-                                                        size: 16,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      // Text for "99+ pcs"
-                                                      Text(
-                                                        "99+ pcs",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                // ButtonWidget
-                                ButtonWidget(
-                                  label: "Bagikan Produk",
-                                  backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                                  foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                                  borderRadius: BorderRadius.circular(8),
-                                  side: BorderSide.none,
-                                  onPressed: () {
-                                    print("Bagikan Produk pressed");
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Card(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              children: [
-                                // Stack for the image and button overlay
-                                Stack(
-                                  children: [
-                                    // Image
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(
-                                        top: Radius.circular(9),
-                                      ),
-                                      child: Image.asset(
-                                        'assets/images/PexelsPhotobyLukas.png',
-                                        fit: BoxFit.cover,
-                                        height: 160,
-                                        width: double.infinity,
-                                      ),
-                                    ),
-                                    // ButtonWidget on the bottom-left corner
-                                    Positioned(
-                                      bottom: 8, // Adjust the vertical position
-                                      left: 8, // Adjust the horizontal position
-                                      child: SizedBox(
-                                        width: 100, // Adjust width as needed
-                                        child: ButtonWidget(
-                                          label: "Komisi", // Regular text
-                                          boldTextBefore: "30%", // Bold text before
-                                          onPressed: () {
-                                            print("30% Komisi button clicked");
-                                          },
-                                          backgroundColor: const Color(0xCC0EA5E9), // Background color
-                                          foregroundColor: Colors.white, // Text color
-                                          borderRadius: BorderRadius.circular(6), // Rounded corners
-                                          side: BorderSide.none, // No border
-                                          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2), // Tight padding
-                                          fontSize: 10, // Font size
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      // Product Name
-                                      Text(
-                                        "Beauty Set by Irvie",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 8), // Spacing between product name and price
-                                      // Row containing "Harga Reseller" and price with icon
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          // Column for "Harga Reseller" and "Rp142.400"
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Harga Reseller",
-                                                style: TextStyle(
-                                                  fontSize: 10,
-                                                  color: Color(0xFF697170),
-                                                ),
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                children: [
-                                                  Text(
-                                                    "Rp142.400",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.green,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  SizedBox(width: 16), // Spacing between price and icon
-                                                  Row(
-                                                    children: [
-                                                      // Icon for "99+ pcs"
-                                                      Icon(
-                                                        Icons.shopping_cart,
-                                                        size: 16,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      // Text for "99+ pcs"
-                                                      Text(
-                                                        "99+ pcs",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                // ButtonWidget
-                                ButtonWidget(
-                                  label: "Bagikan Produk",
-                                  backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-                                  foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                                  borderRadius: BorderRadius.circular(8),
-                                  side: BorderSide.none,
-                                  onPressed: () {
-                                    print("Bagikan Produk pressed");
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                const SizedBox(width: 16), // Spacing between cards
+                Expanded(
+                  child: ProductCard(
+                    imagePath: 'assets/images/PexelsPhotobyLukas.png',
+                    buttonLabel: 'Komisi',
+                    boldTextBefore: '25%',
+                    onButtonPressed: () {},
+                    bookmarkText: 'New',
+                    productName: 'Daily Skincare',
+                    price: 'Rp120.000',
+                    stock: '50 pcs',
+                  ),
                 ),
               ],
             ),
-          )
+          ),
+          const SizedBox(height: 16), // Spacing between the first and second row
+
+          // Title above the second row
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              "Produk Serupa",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // Second Row of Cards
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: ProductCard(
+                    imagePath: 'assets/images/PexelsPhotobyLukas.png',
+                    buttonLabel: 'Komisi',
+                    boldTextBefore: '20%',
+                    onButtonPressed: () {},
+                    bookmarkText: 'New',
+                    productName: 'Moisturizer Pack',
+                    price: 'Rp100.000',
+                    stock: '70 pcs',
+                  ),
+                ),
+                const SizedBox(width: 16), // Spacing between cards
+                Expanded(
+                  child: ProductCard(
+                    imagePath: 'assets/images/PexelsPhotobyLukas.png',
+                    buttonLabel: 'Komisi',
+                    boldTextBefore: '15%',
+                    onButtonPressed: () {},
+                    productName: 'Essential Oils',
+                    price: 'Rp90.000',
+                    stock: '30 pcs',
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
