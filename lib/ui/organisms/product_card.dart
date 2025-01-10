@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tokorame/ui/atoms/button_widget.dart';
 
+/// A widget representing a product card, including an image, bookmark, price, stock, and a button.
 class ProductCard extends StatelessWidget {
-  final String imagePath;
-  final String buttonLabel;
-  final String boldTextBefore;
-  final VoidCallback onButtonPressed;
-  final String? bookmarkText;
-  final String productName;
-  final String price;
-  final String stock;
-  
+  final String imagePath; // Path to the product image.
+  final String buttonLabel; // Label for the bottom-left button on the image.
+  final String boldTextBefore; // Bold text before the button label.
+  final VoidCallback onButtonPressed; // Callback when the button is pressed.
+  final String? bookmarkText; // Optional text for the bookmark.
+  final String productName; // Name of the product.
+  final String price; // Price of the product.
+  final String stock; // Stock availability of the product.
+
   const ProductCard({
     required this.imagePath,
     required this.buttonLabel,
@@ -26,37 +27,40 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
-      elevation: 0,
+      color: Colors.white, // Card background color.
+      elevation: 0, // Removes elevation/shadow.
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8), // Rounded corners.
       ),
       child: Column(
         children: [
+          // Stack for image, bookmark, and button overlay.
           Stack(
             children: [
+              // Product image with rounded top corners.
               ClipRRect(
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(8),
                 ),
                 child: Image.asset(
                   imagePath,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.cover, // Image scales to fit its container.
                   height: 160,
                   width: double.infinity,
                 ),
               ),
+              // Optional bookmark text positioned at the top-right corner.
               if (bookmarkText != null)
                 Positioned(
                   top: 0,
                   right: 6,
                   child: Stack(
-                    alignment: Alignment.center,
+                    alignment: Alignment.center, // Centers text on the bookmark.
                     children: [
                       Image.asset(
-                        'assets/images/Bookmark.png',
-                        height: 40,
-                        width: 40,
+                        'assets/images/Bookmark.png', // Bookmark background image.
+                        height: 32,
+                        width: 32,
                         fit: BoxFit.cover,
                       ),
                       Text(
@@ -70,31 +74,34 @@ class ProductCard extends StatelessWidget {
                     ],
                   ),
                 ),
+              // Bottom-left button on the image.
               Positioned(
                 bottom: 8,
                 left: 8,
                 child: SizedBox(
-                  width: 100,
+                  width: 100, // Adjusts button width.
                   child: ButtonWidget(
                     label: buttonLabel,
                     boldTextBefore: boldTextBefore,
                     onPressed: onButtonPressed,
-                    backgroundColor: const Color(0xCC0EA5E9),
-                    foregroundColor: Colors.white,
-                    borderRadius: BorderRadius.circular(6),
-                    side: BorderSide.none,
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
-                    fontSize: 10,
+                    backgroundColor: const Color(0xCC0EA5E9), // Button background color.
+                    foregroundColor: Colors.white, // Button text color.
+                    borderRadius: BorderRadius.circular(6), // Rounded button corners.
+                    side: BorderSide.none, // No border around the button.
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2), // Button padding.
+                    fontSize: 10, // Font size for button text.
                   ),
                 ),
               ),
             ],
           ),
+          // Product details: name, price, and stock.
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Product name.
                 Text(
                   productName,
                   style: const TextStyle(
@@ -102,20 +109,23 @@ class ProductCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                const SizedBox(height: 8), // Spacing between product name and details.
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    // Reseller price label.
+                    const Text(
+                      "Harga Reseller",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Color(0xFF697170),
+                      ),
+                    ),
+                    // Row for price and stock info.
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween, // Aligns children to edges.
                       children: [
-                        const Text(
-                          "Harga Reseller",
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Color(0xFF697170),
-                          ),
-                        ),
+                        // Product price.
                         Text(
                           price,
                           style: const TextStyle(
@@ -124,21 +134,23 @@ class ProductCard extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.shopping_cart,
-                          size: 16,
-                          color: Colors.grey,
-                        ),
-                        Text(
-                          stock,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
+                        // Stock information with an icon.
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.business_center,
+                              size: 16,
+                              color: Colors.grey,
+                            ),
+                            const SizedBox(width: 2), // Spacing between icon and stock text.
+                            Text(
+                              stock,
+                              style: const TextStyle(
+                                fontSize: 10,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -147,6 +159,7 @@ class ProductCard extends StatelessWidget {
               ],
             ),
           ),
+          // "Bagikan Produk" button below the product details.
           ButtonWidget(
             label: "Bagikan Produk",
             backgroundColor: const Color.fromARGB(255, 0, 0, 0),
@@ -154,7 +167,7 @@ class ProductCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             side: BorderSide.none,
             onPressed: () {
-              _showShareBottomSheet(context); // Call the bottom sheet function
+              _showShareBottomSheet(context); // Calls the share bottom sheet function.
             },
           ),
         ],
@@ -162,15 +175,16 @@ class ProductCard extends StatelessWidget {
     );
   }
 
+  /// Displays a bottom sheet for sharing the product.
   void _showShareBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.white.withOpacity(1),
-      barrierColor: Colors.black.withOpacity(0.7), // Blurring the main page
-      isScrollControlled: true, // Allows the sheet to take up more space
+      backgroundColor: Colors.white.withOpacity(1), // Bottom sheet background color.
+      barrierColor: Colors.black.withOpacity(0.7), // Blurs the main page.
+      isScrollControlled: true, // Allows the sheet to take up more space.
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(16),
+          top: Radius.circular(16), // Rounded top corners.
         ),
       ),
       builder: (context) {
@@ -179,14 +193,14 @@ class ProductCard extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // Title row with a close icon.
               Row(
-                // 'X' icon + title
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   IconButton(
                     icon: const Icon(Icons.close),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pop(context); // Closes the bottom sheet.
                     },
                   ),
                   const Text(
@@ -199,9 +213,9 @@ class ProductCard extends StatelessWidget {
                   const SizedBox(width: 48),
                 ],
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 24), // Spacing between title and content.
+              // Section: Teks dan Link
               Container(
-                // border bottom
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -210,25 +224,20 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Row(
-                  children: [
-                    // title + border bottom
-                    Padding(
-                      padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
-                      child: Text(
-                        "Teks dan Link",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
+                  child: Text(
+                    "Teks dan Link",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
                     ),
-                  ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 32), // Spacing between sections.
+              // Section: Gambar
               Container(
-                // border bottom
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -237,20 +246,15 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Row(
-                  children: [
-                    // title + border bottom
-                    Padding(
-                      padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
-                      child: Text(
-                        "Gambar",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
+                  child: Text(
+                    "Gambar",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
                     ),
-                  ],
+                  ),
                 ),
               ),
             ],
