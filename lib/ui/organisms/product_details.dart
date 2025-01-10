@@ -199,7 +199,7 @@ class ProductDetails extends StatelessWidget {
                         Expanded(
                           child: Card(
                             color: Colors.white, // Make the card background transparent
-                            elevation: 2,
+                            elevation: 0,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -331,7 +331,8 @@ class ProductDetails extends StatelessWidget {
                         const SizedBox(width: 16), // Spacing between cards
                         Expanded(
                           child: Card(
-                            elevation: 2,
+                            color: Colors.white, // Make the card background transparent
+                            elevation: 0,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
