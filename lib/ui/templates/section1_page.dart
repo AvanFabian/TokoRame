@@ -15,14 +15,14 @@ class Section1 extends StatelessWidget {
           'assets/images/PexelsPhotobyKampusProduction.png',
         ],
         titles: const [
-          'Gratis Materi Belajar Menjadi Seller Handal',
-          'Ribuan Produk dengan Kualitas Terbaik',
-          'Toko Online Unik Untuk Kamu Jualan',
+          'Gratis Materi Belajar \n Menjadi Seller Handal',
+          'Ribuan Produk dengan \n Kualitas Terbaik',
+          'Toko Online Unik \n Untuk Kamu Jualan',
         ],
         descriptions: const [
-          'Nggak bisa jualan? Jangan khawatir, Tokorame akan membimbing kamu hingga menjadi seller langsung dari ahlinya',
-          'Tokorame menyediakan ribuan produk dengan kualitas derbaik dari seller terpercaya',
-          'Subdomain unik dan toko online profesional siap pakai',
+          'Nggak bisa jualan? \n Jangan khawatir, Tokorame akan membimbing kamu \n hingga menjadi seller langsung dari ahlinya',
+          'Tokorame menyediakan ribuan produk dengan kualitas \n derbaik dari seller terpercaya',
+          'Subdomain unik dan toko online profesional \n siap pakai',
         ],
         onButtonPressed: () {
           // navigate to ProdukScreen

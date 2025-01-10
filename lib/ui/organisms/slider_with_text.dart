@@ -109,7 +109,7 @@ class _SliderWithTextState extends State<SliderWithText> {
                 TextWidget(
                   text: widget.titles[_currentIndex],
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontSize: 20,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                         height: 1.3,
                       ),
@@ -118,15 +118,15 @@ class _SliderWithTextState extends State<SliderWithText> {
                 TextWidget(
                   text: widget.descriptions[_currentIndex],
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontSize: 14,
-                        color: Colors.grey[600],
+                        fontSize: 12,
+                        color: const Color(0xFF242626),
                         height: 1.5,
                       ),
                 ),
                 const SizedBox(height: 24),
                 ButtonWidget(
                   label: 'Selanjutnya',
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(10),
                   side: BorderSide.none,
                   onPressed: widget.onButtonPressed,
                 ),

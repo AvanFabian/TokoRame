@@ -10,7 +10,7 @@ class ProductCard extends StatelessWidget {
   final String productName;
   final String price;
   final String stock;
-
+  
   const ProductCard({
     required this.imagePath,
     required this.buttonLabel,
@@ -165,8 +165,8 @@ class ProductCard extends StatelessWidget {
   void _showShareBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.white.withOpacity(0.9),
-      barrierColor: Colors.black.withOpacity(0.5), // Blurring the main page
+      backgroundColor: Colors.white.withOpacity(1),
+      barrierColor: Colors.black.withOpacity(0.7), // Blurring the main page
       isScrollControlled: true, // Allows the sheet to take up more space
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -174,35 +174,87 @@ class ProductCard extends StatelessWidget {
         ),
       ),
       builder: (context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(height: 16),
-            const Text(
-              "Bagikan Produk",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            ListTile(
-              leading: const Icon(Icons.link, color: Colors.blue),
-              title: const Text("Salin Tautan"),
-              onTap: () {
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Tautan telah disalin!")),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.share, color: Colors.blue),
-              title: const Text("Bagikan ke Media Sosial"),
-              onTap: () {
-                Navigator.pop(context);
-                print("Bagikan ke media sosial");
-              },
-            ),
-            const SizedBox(height: 16),
-          ],
+        return Padding(
+          padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0, bottom: 120.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                // 'X' icon + title
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  const Text(
+                    "Bagikan Produk",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 48),
+                ],
+              ),
+              const SizedBox(height: 24),
+              Container(
+                // border bottom
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Color(0xFFE6E7E7),
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+                child: const Row(
+                  children: [
+                    // title + border bottom
+                    Padding(
+                      padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
+                      child: Text(
+                        "Teks dan Link",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
+              Container(
+                // border bottom
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Color(0xFFE6E7E7),
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+                child: const Row(
+                  children: [
+                    // title + border bottom
+                    Padding(
+                      padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
+                      child: Text(
+                        "Gambar",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
