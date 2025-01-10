@@ -192,10 +192,10 @@ class ProductDetails extends StatelessWidget {
                 // Nested Column for Rows
                 Column(
                   children: [
-                    // First Row of Cards
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        // First Card
                         Expanded(
                           child: Card(
                             color: Colors.white, // Make the card background transparent
@@ -327,7 +327,7 @@ class ProductDetails extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // second card
+                        // second card (Card 1)
                         const SizedBox(width: 16), // Spacing between cards
                         Expanded(
                           child: Card(
