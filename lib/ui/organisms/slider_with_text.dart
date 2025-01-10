@@ -126,6 +126,8 @@ class _SliderWithTextState extends State<SliderWithText> {
                 const SizedBox(height: 24),
                 ButtonWidget(
                   label: 'Selanjutnya',
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide.none,
                   onPressed: widget.onButtonPressed,
                 ),
               ],

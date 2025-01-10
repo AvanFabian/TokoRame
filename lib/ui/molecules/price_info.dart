@@ -76,8 +76,15 @@ class PriceInfo extends StatelessWidget {
           children: [
             Expanded(
               child: ButtonWidget(
-                label: "Komisi Rp$commission (20%)",
-                // color: Colors.black,
+                label: "Komisi",
+                boldTextAfter: commission,
+                backgroundColor: const Color(0xFFECE806),
+                foregroundColor: const Color(0xFF363939),
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                ),
+                side: BorderSide.none,
                 onPressed: () {
                   print("Beli Sekarang pressed");
                 },

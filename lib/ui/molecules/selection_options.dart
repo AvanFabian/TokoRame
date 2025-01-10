@@ -22,12 +22,31 @@ class SelectionOptions extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: sizes
-              .map((size) => Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Chip(
-                      label: Text(size),
+              .asMap()
+              .map((index, size) => MapEntry(
+                    index,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Chip(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        backgroundColor: const Color(0xFFE6E7E7),
+                        label: Text(
+                          size,
+                          style: TextStyle(
+                            fontWeight: index == 0 ? FontWeight.bold : FontWeight.normal, // Text color for the first chip                            
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                          side: BorderSide(
+                            color: index == 0 ? Colors.black : Colors.transparent, // Border color for the first chip
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
                     ),
                   ))
+              .values
               .toList(),
         ),
         const SizedBox(height: 16),
@@ -38,15 +57,24 @@ class SelectionOptions extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: colors
-              .map((color) => Container(
-                    margin: const EdgeInsets.only(right: 8.0),
-                    width: 32,
-                    height: 32,
-                    decoration: BoxDecoration(
-                      color: color,
-                      shape: BoxShape.circle,
+              .asMap()
+              .map((index, color) => MapEntry(
+                    index,
+                    Container(
+                      margin: const EdgeInsets.only(right: 8.0),
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: color,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: index == 0 ? Colors.black : Colors.transparent, // Border color for the first circle
+                          width: 2.0,
+                        ),
+                      ),
                     ),
                   ))
+              .values
               .toList(),
         ),
       ],

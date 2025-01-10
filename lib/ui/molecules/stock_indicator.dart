@@ -7,11 +7,22 @@ class StockIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "Stock: $stock",
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Colors.grey,
+    return RichText(
+      text: TextSpan(
+        text: 'Stok: ',
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.black,
+            ),
+        children: <TextSpan>[
+          TextSpan(
+            text: stock,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
+        ],
+      ),
     );
   }
 }
