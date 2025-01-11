@@ -21,8 +21,9 @@ class PriceInfo extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          // Column 1
+          crossAxisAlignment: CrossAxisAlignment.center, // Ensures alignment of children
           children: [
+            // Column 1
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -35,18 +36,18 @@ class PriceInfo extends StatelessWidget {
                 ),
                 const Text(
                   "Harga Konsumen",
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Color(0xFF697170)),
                 ),
               ],
             ),
-            const VerticalDivider(
-              width: 36,
-              thickness: 1,
-              indent: 0,
-              endIndent: 0,
-              color: Colors.black,
+            // Vertical Divider
+            const SizedBox(
+              height: 40, // Set height for the divider
+              child: VerticalDivider(
+                width: 36, // Horizontal spacing between columns
+                thickness: 1, // Divider thickness
+                color: Color(0xFF697170), // Divider color
+              ),
             ),
             // Column 2
             Column(
@@ -61,9 +62,7 @@ class PriceInfo extends StatelessWidget {
                 ),
                 const Text(
                   "Harga Reseller",
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Color(0xFF697170)),
                 ),
               ],
             ),
@@ -76,8 +75,12 @@ class PriceInfo extends StatelessWidget {
           children: [
             Expanded(
               child: ButtonWidget(
-                label: "Komisi",
-                boldTextAfter: commission,
+                label: "", // Leave label empty since labelParts is used
+                labelParts: {
+                  "Komisi ": false,
+                  commission: true,
+                  " (20%)": false,
+                },
                 backgroundColor: const Color(0xFFECE806),
                 foregroundColor: const Color(0xFF363939),
                 borderRadius: const BorderRadius.only(
@@ -86,7 +89,6 @@ class PriceInfo extends StatelessWidget {
                 ),
                 side: BorderSide.none,
                 onPressed: () {
-                  print("Beli Sekarang pressed");
                 },
               ),
             ),

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String label; // Main label text
-  final String? boldTextBefore; // Bold text before the label
-  final String? boldTextAfter; // Bold text after the label
+  final Map<String, bool>? labelParts; // Label parts with bold specifications
+  final IconData? icon; // Optional icon for the button
   final VoidCallback onPressed;
   final Color backgroundColor; // Custom background color
-  final Color foregroundColor; // Custom text color
+  final Color foregroundColor; // Custom text/icon color
   final FontWeight fontWeight; // Default font weight for non-bold text
   final BorderRadius borderRadius;
   final BorderSide side;
@@ -15,11 +15,11 @@ class ButtonWidget extends StatelessWidget {
 
   const ButtonWidget({
     required this.label,
+    this.labelParts, // Map of parts for custom text formatting
     required this.onPressed,
-    this.boldTextBefore, // Optional bold text before the label
-    this.boldTextAfter, // Optional bold text after the label
+    this.icon, // Optional icon
     this.backgroundColor = Colors.black, // Default background color
-    this.foregroundColor = Colors.white, // Default text color
+    this.foregroundColor = Colors.white, // Default text/icon color
     this.fontWeight = FontWeight.normal, // Default font weight
     required this.borderRadius, // Default border radius
     required this.side,
@@ -35,7 +35,7 @@ class ButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor, // Custom background color
-          foregroundColor: foregroundColor, // Custom text color
+          foregroundColor: foregroundColor, // Custom text/icon color
           shape: RoundedRectangleBorder(
             borderRadius: borderRadius,
             side: side,
@@ -45,40 +45,42 @@ class ButtonWidget extends StatelessWidget {
           tapTargetSize: MaterialTapTargetSize.shrinkWrap, // Tightens the tap area
         ),
         onPressed: onPressed,
-        child: RichText(
-          text: TextSpan(
-            children: [
-              // Bold text before the label (optional)
-              if (boldTextBefore != null)
-                TextSpan(
-                  text: '$boldTextBefore ', // Add space after bold text
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    fontWeight: FontWeight.bold,
-                    color: foregroundColor,
-                  ),
-                ),
-              // Main label text
-              TextSpan(
-                text: label,
-                style: TextStyle(
-                  fontSize: fontSize,
-                  fontWeight: fontWeight,
-                  color: foregroundColor,
-                ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) // Render icon if provided
+              Icon(
+                icon,
+                size: fontSize + 2, // Adjust icon size relative to font size
+                color: foregroundColor,
               ),
-              // Bold text after the label (optional)
-              if (boldTextAfter != null)
-                TextSpan(
-                  text: ' $boldTextAfter', // Add space before bold text
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    fontWeight: FontWeight.bold,
-                    color: foregroundColor,
-                  ),
-                ),
-            ],
-          ),
+            if (icon != null && label.isNotEmpty) const SizedBox(width: 4), // Spacing between icon and text
+            RichText(
+              text: TextSpan(
+                children: labelParts != null
+                    ? labelParts!.entries.map((entry) {
+                        return TextSpan(
+                          text: entry.key,
+                          style: TextStyle(
+                            fontSize: fontSize,
+                            fontWeight: entry.value ? FontWeight.bold : fontWeight,
+                            color: foregroundColor,
+                          ),
+                        );
+                      }).toList()
+                    : [
+                        TextSpan(
+                          text: label,
+                          style: TextStyle(
+                            fontSize: fontSize,
+                            fontWeight: fontWeight,
+                            color: foregroundColor,
+                          ),
+                        ),
+                      ],
+              ),
+            ),
+          ],
         ),
       ),
     );

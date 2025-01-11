@@ -4,14 +4,14 @@ import 'package:tokorame/ui/atoms/button_widget.dart';
 class CardImageOverlay extends StatelessWidget {
   final String imagePath;
   final String buttonLabel;
-  final String boldTextBefore;
+  final String boldText;
   final VoidCallback onButtonPressed;
   final String? bookmarkText;
 
   const CardImageOverlay({
     required this.imagePath,
     required this.buttonLabel,
-    required this.boldTextBefore,
+    required this.boldText,
     required this.onButtonPressed,
     this.bookmarkText,
     super.key,
@@ -40,8 +40,13 @@ class CardImageOverlay extends StatelessWidget {
           child: SizedBox(
             width: 100,
             child: ButtonWidget(
-              label: buttonLabel,
-              boldTextBefore: boldTextBefore,
+              // label: buttonLabel,
+              // boldTextBefore: boldText,
+              label: "",
+              labelParts: {
+                buttonLabel: false,
+                boldText: true,
+              },
               onPressed: onButtonPressed,
               backgroundColor: const Color(0xCC0EA5E9),
               foregroundColor: Colors.white,

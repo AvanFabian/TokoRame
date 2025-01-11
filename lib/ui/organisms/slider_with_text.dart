@@ -51,7 +51,6 @@ class _SliderWithTextState extends State<SliderWithText> {
                     right: 16,
                     child: GestureDetector(
                       onTap: () {
-                        print('Lewati ditekan');
                       },
                       child: const Text(
                         'Lewati',

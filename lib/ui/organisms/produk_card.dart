@@ -5,7 +5,7 @@ import 'package:tokorame/ui/atoms/button_widget.dart';
 class ProdukCard extends StatelessWidget {
   final String imagePath; // Path to the product image.
   final String buttonLabel; // Label for the bottom-left button on the image.
-  final String boldTextBefore; // Bold text before the button label.
+  final String boldText; // Bold text before the button label.
   final VoidCallback onButtonPressed; // Callback when the button is pressed.
   final String? bookmarkText; // Optional text for the bookmark.
   final String productName; // Name of the product.
@@ -15,7 +15,7 @@ class ProdukCard extends StatelessWidget {
   const ProdukCard({
     required this.imagePath,
     required this.buttonLabel,
-    required this.boldTextBefore,
+    required this.boldText,
     required this.onButtonPressed,
     this.bookmarkText,
     required this.productName,
@@ -81,8 +81,11 @@ class ProdukCard extends StatelessWidget {
                 child: SizedBox(
                   width: 100, // Adjusts button width.
                   child: ButtonWidget(
-                    label: buttonLabel,
-                    boldTextBefore: boldTextBefore,
+                    label: "",
+                    labelParts: {
+                      buttonLabel: false, // Regular text for the button label.
+                      boldText: true, // Bold text before the button label.
+                    },
                     onPressed: onButtonPressed,
                     backgroundColor: const Color(0xCC0EA5E9), // Button background color.
                     foregroundColor: Colors.white, // Button text color.
@@ -179,7 +182,7 @@ class ProdukCard extends StatelessWidget {
   void _showShareBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.white.withOpacity(1), // Bottom sheet background color.
+      backgroundColor: Colors.white, // Bottom sheet background color.
       barrierColor: Colors.black.withOpacity(0.7), // Blurs the main page.
       isScrollControlled: true, // Allows the sheet to take up more space.
       shape: const RoundedRectangleBorder(
@@ -188,76 +191,90 @@ class ProdukCard extends StatelessWidget {
         ),
       ),
       builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0, bottom: 120.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Title row with a close icon.
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () {
-                      Navigator.pop(context); // Closes the bottom sheet.
-                    },
-                  ),
-                  const Text(
-                    "Bagikan Produk",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: 8.0,
+              left: 16.0,
+              right: 16.0,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 128.0, // Dynamic padding for keyboard.
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // Title row with a close icon.
+                Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () {
+                        Navigator.pop(context); // Closes the bottom sheet.
+                      },
                     ),
-                  ),
-                  const SizedBox(width: 48),
-                ],
-              ),
-              const SizedBox(height: 24), // Spacing between title and content.
-              // Section: Teks dan Link
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Color(0xFFE6E7E7),
-                      width: 1.0,
+                    const Text(
+                      "Bagikan Produk",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24), // Spacing between title and content.
+                // Section: Teks dan Link
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Container(
+                    width: double.infinity, // Ensure full width.
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Color(0xFFE6E7E7),
+                          width: 1.0,
+                        ),
+                      ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        "Teks dan Link",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
-                  child: Text(
-                    "Teks dan Link",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
+                const SizedBox(height: 24), // Spacing between sections.
+                // Section: Gambar
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Container(
+                    width: double.infinity, // Ensure full width.
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Color(0xFFE6E7E7),
+                          width: 1.0,
+                        ),
+                      ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        "Gambar",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 32), // Spacing between sections.
-              // Section: Gambar
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Color(0xFFE6E7E7),
-                      width: 1.0,
-                    ),
-                  ),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 16.0, bottom: 8.0),
-                  child: Text(
-                    "Gambar",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

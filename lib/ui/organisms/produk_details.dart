@@ -48,8 +48,12 @@ class ProdukDetails extends StatelessWidget {
                   children: [
                     Flexible(
                       child: ButtonWidget(
-                        label: "Product Baru",
-                        boldTextBefore: "NEW",
+                        label: " ",
+                        // boldText: "NEW",
+                        labelParts: const {
+                          "NEW ": true,
+                          "Product Baru": false,
+                        },
                         onPressed: () {},
                         backgroundColor: const Color(0xFFECE806),
                         foregroundColor: Colors.black,
@@ -200,7 +204,7 @@ class ProdukDetails extends StatelessWidget {
                   child: ProdukCard(
                     imagePath: 'assets/images/PexelsPhotobyLukas.png',
                     buttonLabel: 'Komisi',
-                    boldTextBefore: '30%',
+                    boldText: '30%',
                     onButtonPressed: () {},
                     productName: 'Beauty Set by Irvie',
                     price: 'Rp142.400',
@@ -212,7 +216,7 @@ class ProdukDetails extends StatelessWidget {
                   child: ProdukCard(
                     imagePath: 'assets/images/PexelsPhotobyLukas.png',
                     buttonLabel: 'Komisi',
-                    boldTextBefore: '25%',
+                    boldText: '25%',
                     onButtonPressed: () {},
                     bookmarkText: 'New',
                     productName: 'Daily Skincare',
@@ -248,7 +252,7 @@ class ProdukDetails extends StatelessWidget {
                   child: ProdukCard(
                     imagePath: 'assets/images/PexelsPhotobyLukas.png',
                     buttonLabel: 'Komisi',
-                    boldTextBefore: '20%',
+                    boldText: '20%',
                     onButtonPressed: () {},
                     bookmarkText: 'New',
                     productName: 'Moisturizer Pack',
@@ -261,7 +265,7 @@ class ProdukDetails extends StatelessWidget {
                   child: ProdukCard(
                     imagePath: 'assets/images/PexelsPhotobyLukas.png',
                     buttonLabel: 'Komisi',
-                    boldTextBefore: '15%',
+                    boldText: '15%',
                     onButtonPressed: () {},
                     productName: 'Essential Oils',
                     price: 'Rp90.000',

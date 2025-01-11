@@ -22,7 +22,7 @@ class ProdukPage extends StatelessWidget {
     const String stock = "99+ pcs";
     const String customerPrice = "178.000";
     const String resellerPrice = "142.400";
-    const String commission = "Rp35.600 (20%)";
+    const String commission = "Rp35.600";
 
     final List<String> sizes = ["Paket 1", "Paket 2"];
     final List<Color> colors = [const Color(0xFFDDB69A), const Color(0xFF5B3E36)];
@@ -75,13 +75,13 @@ class ProdukPage extends StatelessWidget {
               color: Colors.white.withOpacity(0.0), // Semi-transparent background
               child: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Arrow Icon on the Left
                       IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.black),
+                        icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
                         onPressed: () {
                           Navigator.pop(context);
                         },
@@ -90,15 +90,13 @@ class ProdukPage extends StatelessWidget {
                       Row(
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.download_for_offline_sharp, color: Colors.black),
+                            icon: const Icon(Icons.file_download_outlined, color: Colors.white),
                             onPressed: () {
-                              print('Download button pressed');
                             },
                           ),
                           IconButton(
-                            icon: const Icon(Icons.add_shopping_cart_sharp, color: Colors.black),
+                            icon: const Icon(Icons.add_shopping_cart_sharp, color: Colors.white),
                             onPressed: () {
-                              print('Shopping Cart button pressed');
                             },
                           ),
                         ],
@@ -127,29 +125,23 @@ class ProdukPage extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 side: const BorderSide(color: Colors.black),
                 onPressed: () {
-                  print("Tambah ke toko pressed");
                 },
               ),
             ),
             const SizedBox(width: 16),
             // Second Button: Shopping Cart Icon
             Expanded(
-              child: SizedBox(
-                height: 48, // Adjust height as needed
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 0, 0, 0), // Black background
-                    foregroundColor: Colors.white, // White icon color
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    elevation: 0, // Remove button shadow
-                  ),
-                  onPressed: () {
-                    print("Shopping Cart pressed");
-                  },
-                  child: const Icon(Icons.shopping_cart, size: 24), // Shopping cart icon
-                ),
+              child: ButtonWidget(
+                label: "", // No text
+                icon: Icons.shopping_cart, // Include shopping cart icon
+                onPressed: () {
+                },
+                backgroundColor: const Color.fromARGB(255, 0, 0, 0), // Black background
+                foregroundColor: Colors.white, // White icon color
+                borderRadius: BorderRadius.circular(8),
+                side: BorderSide.none, // No border
+                padding: const EdgeInsets.all(16), // Adjust padding for the icon
+                fontSize: 16,
               ),
             ),
           ],
