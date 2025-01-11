@@ -1,4 +1,4 @@
-# Denkmeister : German to Indonesia Learning Platform
+# TokoRame
 
 ## 📋 <a name="table">Table of Contents</a>
 
@@ -38,7 +38,7 @@
 
 | Section 1 Slide 3                                                        | Produk Page                                                              |
 | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| <img src="https://github.com/AvanFabian/TokoRame/blob/main/assets/github_docs/section1_3.jpg" width="275" /> | <img src="https://github.com/AvanFabian/TokoRame/blob/main/assets/github_docs/section1_2.jpg" width="275" /> |
+| <img src="https://github.com/AvanFabian/TokoRame/blob/main/assets/github_docs/section1_3.jpg" width="275" /> | [![Watch the Demo](https://raw.githubusercontent.com/AvanFabian/TokoRame/main/assets/github_docs/thumbnail.png)](https://raw.githubusercontent.com/AvanFabian/TokoRame/main/assets/github_docs/produk_page.mp4) |
 
 
 
