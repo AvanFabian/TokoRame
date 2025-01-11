@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tokorame/ui/pages/produk_screen.dart';
-import '../organisms/slider_with_text.dart';
+import '../organisms/section1_slider_with_text.dart';
 
 class Section1 extends StatelessWidget {
   const Section1({super.key});

@@ -6,6 +6,7 @@ class ProdukScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ProdukPage is a StatelessWidget
     return const ProdukPage();
   }
 }
