@@ -29,6 +29,32 @@
     ```bash
     flutter pub get
     ```
+4. Install FVM (Flutter Version Management): If FVM is not installed, add it to your system using the following:
+
+    ```bash
+    dart pub global activate fvm
+    ```
+5. Ensure FVM is correctly set up:
+
+    ```bash
+    fvm install
+    ```
+6. Use the Specified Flutter Version: Use FVM to ensure you're running the version specified for this project:
+
+    ```bash
+    fvm use
+    ```
+7. Install Dependencies: Install all required dependencies:
+
+    ```bash
+    fvm flutter pub get
+    ```
+8. Run the Application: Start the application using the specified Flutter version managed by FVM:
+
+    ```bash
+    fvm flutter run
+    ```
+
 
 ## <a name="pages">🤸 Pages</a>
 
